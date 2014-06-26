@@ -108,3 +108,7 @@ Great / strong ( x 1.5 )
 Fantastic / powerful ( x 2 )
 Masterwork / Imposing ( x 5)
 Artifact / godlike ( x 10)
+
+
+
+Classes will be editable and addable in the same way as enemies and such are, and will have a randomly generated weapon, armour and consumable with them as well
