@@ -112,3 +112,6 @@ Artifact / godlike ( x 10)
 
 
 Classes will be editable and addable in the same way as enemies and such are, and will have a randomly generated weapon, armour and consumable with them as well
+in the form
+
+classname, bonus hp, attack modifier, xp modifier(representative of the skill of a base class so different levels)
