@@ -1,0 +1,51 @@
+50
+Orange,5,5,0
+Apple,2,2,2
+Vodka,-1,2,2
+Bourbon,-3,10,10
+Satsuma,3,3,0
+Lager,2,-1,1
+MRE,10,0,0
+Bratwurst,3,2,1
+Penicillin,15,5,0
+Paracetamol,7,2,2
+Codeine,13,7,1
+Xanax,5,5,0
+Marijuana,2.2,0
+Orange Juice,4,4,0
+Apple Juice,1,1,0
+Rohypnol,-5,10,5
+Pear,3,3,0
+Pear Juice,2,2,0
+Cymbalta,-5,5,2
+Cocaine,10,10,0
+Heroin,7,7,0
+Jar of MediGel,12,0,0
+Bandage,6,0,0
+First Aid Kit,10,0,0
+Petrol,-5,15,0
+Chocolate,10,1,0
+LSD,-5,5,0
+Vaseline,-10,5,0
+Toffee,5,10,0
+Caramel,2,5,0
+Fudge,3,7,0
+Steak,10,5,0
+Jam,5,5,0
+Lemon Curd,7,7,1
+Peanut Butter,4,4,0
+Jelly,3,3,0
+Ham Sandwich,8,8,1
+Jam Sandwich,4,4,0
+Goulash,6,6,1
+Pork Pie,3,3,0
+Bacon,4,4,1
+Boiled Egg,3,3,2
+Morphine,20,5,0
+Absinthe,-10,5,5
+Brazil Nuts,5,5,0
+Paint,-10,20,0
+Tomato Soup,10,10,2
+Baked Beans,7,7,2
+Tea,8,8,2
+Coffee,2,2,2

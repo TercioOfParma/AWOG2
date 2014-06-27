@@ -1,0 +1,51 @@
+50
+Plate mail,10
+War Paint,1
+Scutum,5
+Lorica Segmentum,8
+Dragon Skin,13
+Kevlar,9
+Cotton Armour,11
+Leather Jerkin,7
+Line Infantry Uniform,4
+T shirt and Jeans,2
+Chainmail,8
+Lamellar armour,8
+Karuta,8
+Cloak,3
+Tattoo,1
+Mempo,4
+Riot Helmet,4
+Riot Shield,6
+Fur Cap,2
+Beret,2
+Ballistic Nylon Suit,10
+MC Hammer,12
+Stahlhelm,6
+Pilotika,2
+Mirror Armour,6
+Aspis,4
+Targe,3
+Conical hat,2
+Leather Jacket,3
+Suit,4
+Dog Collar,1
+Meteroic Iron Armour,12
+Bronze Breastplate,9
+Kevlar Balaclava,4
+Hoodie,3
+Panda Onesie,2
+Cybernetic arms,12
+Mech Suit,15
+Force Field,12
+Adaptive Camouflage,8
+Flak Jacket,7
+Carapace Armour,11
+Mullet,3
+Wooden Breastplate,5
+Cybernetic Legs,14
+Adamantium Skull,16
+Pickelhaube,11
+Bulletproof vest,10
+Scale Mail,7
+Inspiring Aura,2
