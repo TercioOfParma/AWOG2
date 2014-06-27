@@ -26,6 +26,7 @@ void init()
 
 void deinit()
 {
+	clearscr();
 	endwin();
 	exit(0);
 
@@ -42,11 +43,11 @@ void create_player(creature *player, FILE *wep, FILE *armour, FILE *item)
 	player->itemname = malloc(sizeof(char) * 40);
 	player->classname = malloc(sizeof(char) * 40);
 	
-	player->hp = rand() % 100 + 20;
+	player->hp = rand() % 1000 + 20;
 	player->chp = rand() % 20 + 12;
 	player->nhp = rand() % 20 + 12;
 	player->xp = 0;
-	player->tohit = rand() % 16 + 12;
+	player->tohit = rand() % 10 + 5;
 	player->level = 1;
 	
 	generate_weapon(player, wep);
@@ -425,7 +426,7 @@ void generate_enemy(creature *monster,FILE *wep, FILE *armour, FILE* item, FILE 
 				monster->chp = monster->chp / 5;
 				monster->nhp = monster->nhp / 5;
 				monster->xp = monster->xp / 5;
-				monster->tohit = monster->tohit / 5;
+				monster->tohit = monster->tohit * 5;
 				break;
 			case 2:
 				strcpy(monster->name, "Crippled ");
@@ -433,7 +434,7 @@ void generate_enemy(creature *monster,FILE *wep, FILE *armour, FILE* item, FILE 
 				monster->chp = monster->chp / 2;
 				monster->nhp = monster->nhp / 2;
 				monster->xp = monster->xp / 2;
-				monster->tohit = monster->tohit / 2;
+				monster->tohit = monster->tohit * 2;
 				break;
 			case 3:
 				strcpy(monster->name, "Old ");
@@ -441,7 +442,7 @@ void generate_enemy(creature *monster,FILE *wep, FILE *armour, FILE* item, FILE 
 				monster->chp = monster->chp / 1.5;
 				monster->nhp = monster->nhp / 1.5;
 				monster->xp = monster->xp / 1.5;
-				monster->tohit = monster->tohit / 1.5;
+				monster->tohit = monster->tohit * 1.5;
 				break;
 			case 4:
 				strcpy(monster->name, "Weak ");
@@ -449,7 +450,7 @@ void generate_enemy(creature *monster,FILE *wep, FILE *armour, FILE* item, FILE 
 				monster->chp = monster->chp - 1;
 				monster->nhp = monster->nhp - 1;
 				monster->xp = monster->xp - 1;
-				monster->tohit = monster->tohit - 1;
+				monster->tohit = monster->tohit + 1;
 				break;
 			case 5:
 				strcpy(monster->name, "Average ");
@@ -460,7 +461,7 @@ void generate_enemy(creature *monster,FILE *wep, FILE *armour, FILE* item, FILE 
 				monster->chp = monster->chp + 1;
 				monster->nhp = monster->nhp + 1;
 				monster->xp = monster->xp + 1;
-				monster->tohit = monster->tohit + 1;
+				monster->tohit = monster->tohit - 1;
 				break;
 			case 7:
 				strcpy(monster->name, "Strong ");
@@ -468,7 +469,7 @@ void generate_enemy(creature *monster,FILE *wep, FILE *armour, FILE* item, FILE 
 				monster->chp = monster->chp * 1.5;
 				monster->nhp = monster->nhp * 1.5;
 				monster->xp = monster->xp * 1.5;
-				monster->tohit = monster->tohit * 1.5;
+				monster->tohit = monster->tohit / 1.5;
 				break;
 			case 8:
 				strcpy(monster->name, "Powerful ");
@@ -476,7 +477,7 @@ void generate_enemy(creature *monster,FILE *wep, FILE *armour, FILE* item, FILE 
 				monster->chp = monster->chp * 2;
 				monster->nhp = monster->nhp * 2;
 				monster->xp = monster->xp * 2;
-				monster->tohit = monster->tohit * 2;
+				monster->tohit = monster->tohit / 2;
 				break;
 			case 9:
 				strcpy(monster->name, "Imposing ");
@@ -484,7 +485,7 @@ void generate_enemy(creature *monster,FILE *wep, FILE *armour, FILE* item, FILE 
 				monster->chp = monster->chp * 5;
 				monster->nhp = monster->nhp * 5;
 				monster->xp = monster->xp * 5;
-				monster->tohit = monster->tohit * 5;
+				monster->tohit = monster->tohit / 5;
 				break;
 			case 10:
 				strcpy(monster->name, "Godlike ");
@@ -492,7 +493,7 @@ void generate_enemy(creature *monster,FILE *wep, FILE *armour, FILE* item, FILE 
 				monster->chp = monster->chp * 10;
 				monster->nhp = monster->nhp * 10;
 				monster->xp = monster->xp * 10;
-				monster->tohit = monster->tohit * 10;
+				monster->tohit = monster->tohit / 10;
 				break;
 			default:
 				strcpy(monster->armourname, "Average ");

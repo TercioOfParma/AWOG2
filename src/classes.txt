@@ -1,6 +1,6 @@
 5
-Barbarian,10,2,0,
-Paladin,0,1,10,
+Barbarian,1000,3,0,
+Paladin,50,10,10,
 Farmer,0,0,0,
-Spartan,20,1,0,
-Legionary,5,1,20,
+Spartan,2000,1,0,
+Legionary,1205,1,20,
