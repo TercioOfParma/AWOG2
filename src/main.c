@@ -16,7 +16,6 @@ int main(int argc, char *argv[])
 	char *patharmour = malloc(sizeof(char) * 50);
 	char *pathweapon = malloc(sizeof(char) * 50);
 	char *pathclass = malloc(sizeof(char) * 50);
-	int option = 0; //for holding result of menu
 	
 	creature *player = malloc(sizeof(creature));
 		
@@ -32,14 +31,19 @@ int main(int argc, char *argv[])
 		FILE *weapons = fopen(pathweapon, "r");
 		FILE *class = fopen(pathclass, "r");
 		
-		
 	
 	
-	create_player(player,weapons,armour,items);	
+	create_player(player,weapons,armour,items);
+	printw("Please enter your name, or LOAD to Load : ");
+	scanw("%s", player->name);
+	printw("\nName: %s\n", player->name);
 	printw("You are carrying a %s that does %c damage, this %s with %dd%d damage\n\n",player->weaponname, player->kind, player->weaponverb, player->weapondice, player->weaponvalue);
 	printw("You are wearing a %s that provides %d protection from regular attacks\n\n", player->armourname, player->armourvalue);
-	printw("The other item that you carry is a %s, and has : %d hp impact; %d xp impact and %d armour impact\n\n", player->itemname, player->itemhp, player->itemxp, player->itemarmour);
+	printw("The other item that you carry is an %s, and has : %d hp impact; %d xp impact and %d armour impact\n\n", player->itemname, player->itemhp, player->itemxp, player->itemarmour);
+	printw("This Is You NOW, Now please enter the ARENA of Generica!\n\n Please press any key to continue");
 	getch();
+	classselect(player,class);
+	mainmenu(player,weapons,armour,items,monsters);
 	deinit();
 
 

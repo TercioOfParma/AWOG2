@@ -1,51 +1,51 @@
 50
-Katana,edge,12,2,slashes
-Naginata,edge,8,3,slashes
-No Dachi,edge,10,3,slashes
-Bastard Sword,edge,8,2,stabs
-Gladius Hispaniensis,edge,6,2,pierces
-Stick,blunt,4,1,smacks
-Quarterstaff,blunt,4,2,whacks
-One Handed Battle Axe,edge,6,2,slashes
-Two Handed Battle Axe,edge,6,3,hacks
-Morning Star,blunt,8,2,crushes
-Mace,blunt,10,1,smashes
-Scimitar,edge,6,2,slashes
-Wakizashi,edge,12,1,slices
-Bardiche,edge,8,3,severs
-Falx,edge,6,3,slashes
-Xiphos,edge,6,2,cuts
-Kopis,edge,8,2,cuts
-Entrenching Tool,edge,10,2,hacks
-Trench Knife,edge,4,4,pierces
-Brass Knuckles,blunt,4,2,punches
-Sledgehammer,blunt,6,3,crushes
-Claw Hammer,blunt,8,2,smashes
-Halberd,edge,8,3,hacks
-Hasta,edge,12,2,penetrates
-Pike,edge,6,3,stabs
-Swiss Army Knife,edge,6,1,cuts
-Lawnmower,edge,12,2,eviscerates
-Warhammer,blunt,8,3,smashes
-Doner Kebab Stick,edge,6,2,pierces
-Chainsaw,edge,8,3,maims
-Choppa.blunt,10,2,crushes
-Sabre,edge,6,3,slashes
-Umbrella,blunt,4,1,whacks
-Tire Iron,blunt,6,1,smashes
-Frying Pan,blunt,8,1,hits
-Hot Frying Pan,blunt,12,1,burns
-Kukri,edge,12,2,cuts
-Machete,edge,10,2,hacks
-Cannon Ball,blunt,6,2,wrecks
-Weed Whacker,edge,10,2,flays
-Pair of Pliers,blunt,6,2,pinches
-Scissors,edge,8,1,stabs
-Battery Powered Hair Straighteners,blunt,4,3,burns
-Tazer,blunt,6,2,shocks
-Keyboard,blunt,4,1,whacks
-Trident,edge,6,3,pierces
-Syringe,edge,4,2,injects
-Deck Chair,blunt,6,2,smashes
-Laser Beam,edge,6,3,burns
-Mk 23 Lucas Light Sword,edge,10,3,burns
+Katana,edge,12,2,slash,
+Naginata,edge,8,3,slash,
+No Dachi,edge,10,3,slash,
+Bastard Sword,edge,8,2,stab,
+Gladius Hispaniensis,edge,6,2,pierce,
+Stick,blunt,4,1,smack,
+Quarterstaff,blunt,4,2,whack,
+One Handed Battle Axe,edge,6,2,slashe,
+Two Handed Battle Axe,edge,6,3,hack,
+Morning Star,blunt,8,2,crush,
+Mace,blunt,10,1,smash,
+Scimitar,edge,6,2,slash,
+Wakizashi,edge,12,1,slice, 
+Bardiche,edge,8,3,sever, 
+Falx,edge,6,3,slash, 
+Xiphos,edge,6,2,cut, 
+Kopis,edge,8,2,cut, 
+Entrenching Tool,edge,10,2,hack, 
+Trench Knife,edge,4,4,pierce, 
+Brass Knuckles,blunt,4,2,punch, 
+Sledgehammer,blunt,6,3,crush, 
+Claw Hammer,blunt,8,2,smash, 
+Halberd,edge,8,3,hack, 
+Hasta,edge,12,2,penetrate, 
+Pike,edge,6,3,stab, 
+Swiss Army Knife,edge,6,1,cut, 
+Lawnmower,edge,12,2,eviscerate, 
+Warhammer,blunt,8,3,smashe,
+Doner Kebab Stick,edge,6,2,pierce, 
+Chainsaw,edge,8,3,maim, 
+Choppa,blunt,10,2,crush, 
+Sabre,edge,6,3,slash, 
+Umbrella,blunt,4,1,whack, 
+Tire Iron,blunt,6,1,smash, 
+Frying Pan,blunt,8,1,hit, 
+Hot Frying Pan,blunt,12,1,burn, 
+Kukri,edge,12,2,cut, 
+Machete,edge,10,2,hack, 
+Cannon Ball,blunt,6,2,wreck, 
+Weed Whacker,edge,10,2,flay,
+Pair of Pliers,blunt,6,2,pinch,
+Scissors,edge,8,1,stab,
+Battery Powered Hair Straighteners,blunt,4,3,burn,
+Tazer,blunt,6,2,shock,
+Keyboard,blunt,4,1,whack,
+Trident,edge,6,3,pierce,
+Syringe,edge,4,2,inject,
+Deck Chair,blunt,6,2,smashe,
+Laser Beam,edge,6,3,burn,
+Mk 23 Lucas Light Sword,edge,10,3,burn,

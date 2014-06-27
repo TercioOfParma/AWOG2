@@ -1,51 +1,51 @@
 50
-Turtle,15,4,4,6,16
-Rat,10,3,3,5,15
-Mouse,7,2,2,5,17
-Koala,15,4,4,10,14
-Pug,17,5,5,11,15
-Whippet,19,6,5,12,14
-Great Dane,27,8,6,20,13
-Ashigaru,55,10,11,29,14
-Orc,70,12,15,35,15
-Goblin,40,9,8,24,15
-Bandit,45,10,11,24,15
-Hoplite,65,11,11,32,14
-Roman Legionary,70,12,13,32,13
-Roman Auxiliary,62,11,12,30,14
-White Wolf,80,14,16,50,16
-Elf,40,9,9,25,14
-Homeless Man,35,8,8,20,16
-Spartan,75,15,15,48,13
-Giant Owl,72,14,14,44,14
-Land Carp,100,17,17,58,14
-Shark,110,19,19,65,14
-Wehrmacht Soldat,78,15,16,60,13
-Motostrelki,72,15,14,57,15
-VDV,90,18,18,80,13
-Spetznaz,95,20,20,90,12
-SAS,100,21,21,94,12
-Elephant,160,30,30,120,15
-Space Marine,200,40,40,160,14
-Dwarf,80,25,25,95,14
-Lion,90,28,28,110,14
-Tiger,95,31,31,120,14
-Hedgehog,7,2,2,4,15
-Pigeon,12,3,3,6,14
-Gnome,25,5,5,13,14
-Golem,180,100,100,150,14
-Giant Sponge,200,50,50,140,16
-Giant Cave Spider,120,30,30,120,14
-Tarantula,22,3,4,12,15
-Sentient Car,100,100,100,100,13
-Zombie,30,20,10,24,16
-Zombie Soldier,45,40,15,31,15
-Thug,35,11,10,29,14
-Python,35,12,11,33,15
-Rabid Badger,40,11,11,30,15
-Furbie,20,3,3,11,16
-Mutant Butterfly,50,20,20,40,14
-Death's head moth,5,2,2,4,16
-Poison Toad,40,15,15,25,14
-Cyberperson,80,30,20,60,15
-Cyclops,130,40,20,80,16
+Turtle,15,4,4,6,16,
+Rat,10,3,3,5,15,
+Mouse,7,2,2,5,17,
+Koala,15,4,4,10,14,
+Pug,17,5,5,11,15,
+Whippet,19,6,5,12,14,
+Great Dane,27,8,6,20,13,
+Ashigaru,55,10,11,29,14,
+Orc,70,12,15,35,15,
+Goblin,40,9,8,24,15,
+Bandit,45,10,11,24,15,
+Hoplite,65,11,11,32,14,
+Roman Legionary,70,12,13,32,13,
+Roman Auxiliary,62,11,12,30,14,
+White Wolf,80,14,16,50,16,
+Elf,40,9,9,25,14,
+Homeless Man,35,8,8,20,16,
+Spartan,75,15,15,48,13,
+Giant Owl,72,14,14,44,14,
+Land Carp,100,17,17,58,14,
+Shark,110,19,19,65,14,
+Wehrmacht Soldat,78,15,16,60,13,
+Motostrelki,72,15,14,57,15,
+VDV,90,18,18,80,13,
+Spetznaz,95,20,20,90,12,
+SAS,100,21,21,94,12,
+Elephant,160,30,30,120,15,
+Space Marine,200,40,40,160,14,
+Dwarf,80,25,25,95,14,
+Lion,90,28,28,110,14,
+Tiger,95,31,31,120,14,
+Hedgehog,7,2,2,4,15,
+Pigeon,12,3,3,6,14,
+Gnome,25,5,5,13,14,
+Golem,180,100,100,150,14,
+Giant Sponge,200,50,50,140,16,
+Giant Cave Spider,120,30,30,120,14,
+Tarantula,22,3,4,12,15,
+Sentient Car,100,100,100,100,13,
+Zombie,30,20,10,24,16,
+Zombie Soldier,45,40,15,31,15,
+Thug,35,11,10,29,14,
+Python,35,12,11,33,15,
+Rabid Badger,40,11,11,30,15,
+Furbie,20,3,3,11,16,
+Mutant Butterfly,50,20,20,40,14,
+Death's head moth,5,2,2,4,16,
+Poison Toad,40,15,15,25,14,
+Cyberperson,80,30,20,60,15,
+Cyclops,130,40,20,80,16,

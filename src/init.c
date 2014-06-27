@@ -18,8 +18,8 @@ void init()
 	init_pair(2, COLOR_RED, COLOR_BLACK); //bleeding text
 	init_pair(3, COLOR_BLUE, COLOR_BLACK);//nerve damage text
 	init_pair(4, COLOR_GREEN, COLOR_BLACK); //critical
-
-
+	
+	
 
 
 }
@@ -40,6 +40,15 @@ void create_player(creature *player, FILE *wep, FILE *armour, FILE *item)
 	player->weaponverb = malloc(sizeof(char) * 40);
 	player->armourname = malloc(sizeof(char) * 40);
 	player->itemname = malloc(sizeof(char) * 40);
+	player->classname = malloc(sizeof(char) * 40);
+	
+	player->hp = rand() % 100 + 20;
+	player->chp = rand() % 20 + 12;
+	player->nhp = rand() % 20 + 12;
+	player->xp = 0;
+	player->tohit = rand() % 16 + 12;
+	player->level = 1;
+	
 	generate_weapon(player, wep);
 	generate_item(player, item);
 	generate_armour(player, armour);
@@ -52,11 +61,11 @@ void create_player(creature *player, FILE *wep, FILE *armour, FILE *item)
 }
 void generate_weapon(creature *player, FILE *wep)
 {
-	printw("Loading Weapon\n");
+	rewind(wep);
 	int noweapons = 50;
 	int looper = 0;
 	char *temphold = malloc(sizeof(char) * MAX_BYTESIZE_ITEMS);
-	char *weaponname, *weaponkind, *weaponsides, *weapondie;
+	char *weaponname, *weaponkind, *weaponsides, *weapondie, *weaponverb;
 	fgets(temphold, MAX_BYTESIZE_ITEMS, wep);
 	
 	char *weapons[noweapons];
@@ -94,8 +103,8 @@ void generate_weapon(creature *player, FILE *wep)
 	weapondie = strtok(NULL, ",");
 	player->weaponvalue = atoi(weaponsides);
 	player->weapondice = atoi(weapondie);
-	player->weaponverb = strtok(NULL, ",");
-
+	weaponverb = strtok(NULL, ",");
+	strcpy(player->weaponverb,weaponverb);
 		switch(quality)
 		{
 			case 1:
@@ -150,11 +159,13 @@ void generate_weapon(creature *player, FILE *wep)
 			looper++;
 		
 		}
+		free(temphold);
 
 }
 
 void generate_item(creature *player, FILE *item)
 {
+	rewind(item);
 	char *itemname, *hpimp, *xpimp, *armourimp;
 	char *temphold = malloc(sizeof(char) * MAX_BYTESIZE_ITEMS);
 	int looper = 0;
@@ -260,10 +271,12 @@ void generate_item(creature *player, FILE *item)
 			looper++;
 		
 		}
+		free(temphold);
 }
 
 void generate_armour(creature *player, FILE *armour)
 {
+		rewind(armour);
 		char *armourname, *armourvalue, *temphold;
 		int looper = 0;
 		int noarmour = 0;
@@ -342,23 +355,160 @@ void generate_armour(creature *player, FILE *armour)
 			looper++;
 		
 		}
+		free(temphold);
 }
 
 void clearscr()
 {
-	int x, y;
-	
-	while(x < LINES)
-		{
-		while(y < COLS)
-			{
-				mvaddch(' ', y, x);
-				x++;
-			}
-			x = 0;
-			y++;
-		}
+	clear();
+	refresh();
 
+}
+
+
+
+
+void generate_enemy(creature *monster,FILE *wep, FILE *armour, FILE* item, FILE *mon)
+{
+	rewind(mon);
+	clearscr();
+	monster->name = malloc(sizeof(char) * 40);
+	monster->weaponname = malloc(sizeof(char) * 40);
+	monster->weaponverb = malloc(sizeof(char) * 40);
+	monster->armourname = malloc(sizeof(char) * 40);
+	monster->itemname = malloc(sizeof(char) * 40);
+
+	monster->level = rand() % 5 + 1;
+	generate_armour(monster,armour);
+	generate_item(monster,item);
+	generate_weapon(monster,wep);
+	
+	int nomonsters = 50;
+	char *enemyname,*enemyhp,*enemycirchp,*enemynervehp,*enemyxp,*enemytohit;
+	char *temphold = malloc(sizeof(char) * MAX_BYTESIZE_ITEMS);
+	fgets(temphold, MAX_BYTESIZE_ITEMS, mon);
+	
+	nomonsters = atoi(temphold);
+	int looper = 0;
+	char *monsters[nomonsters];
+	
+	
+	while(looper < nomonsters)
+	{
+		monsters[looper] = malloc(sizeof(char) * 200);
+		fgets(monsters[looper],MAX_THINGSTRING_SIZE,mon);
+		looper++;
+	
+	
+	}
+	int chooser = rand() % nomonsters;
+	int adjective = rand() % 10 + 1;
+	
+	enemyname = strtok(monsters[chooser], ",");
+	enemyhp = strtok(NULL,",");
+	enemycirchp = strtok(NULL, ",");
+	enemynervehp = strtok(NULL, ",");
+	enemyxp = strtok(NULL, ",");
+	enemytohit = strtok(NULL, ",");
+
+	monster->hp = atoi(enemyhp);
+	monster->chp = atoi(enemycirchp);
+	monster->nhp = atoi(enemynervehp);
+	monster->xp = atoi(enemyxp);
+	monster->tohit = atoi(enemytohit);
+
+		switch(adjective)
+		{
+			case 1:
+				strcpy(monster->name, "Barely Alive ");
+				monster->hp = monster->hp / 5;
+				monster->chp = monster->chp / 5;
+				monster->nhp = monster->nhp / 5;
+				monster->xp = monster->xp / 5;
+				monster->tohit = monster->tohit / 5;
+				break;
+			case 2:
+				strcpy(monster->name, "Crippled ");
+				monster->hp = monster->hp / 2;
+				monster->chp = monster->chp / 2;
+				monster->nhp = monster->nhp / 2;
+				monster->xp = monster->xp / 2;
+				monster->tohit = monster->tohit / 2;
+				break;
+			case 3:
+				strcpy(monster->name, "Old ");
+				monster->hp = monster->hp / 1.5;
+				monster->chp = monster->chp / 1.5;
+				monster->nhp = monster->nhp / 1.5;
+				monster->xp = monster->xp / 1.5;
+				monster->tohit = monster->tohit / 1.5;
+				break;
+			case 4:
+				strcpy(monster->name, "Weak ");
+				monster->hp = monster->hp - 1;
+				monster->chp = monster->chp - 1;
+				monster->nhp = monster->nhp - 1;
+				monster->xp = monster->xp - 1;
+				monster->tohit = monster->tohit - 1;
+				break;
+			case 5:
+				strcpy(monster->name, "Average ");
+				break;
+			case 6:
+				strcpy(monster->name, "Large ");
+				monster->hp = monster->hp + 1;
+				monster->chp = monster->chp + 1;
+				monster->nhp = monster->nhp + 1;
+				monster->xp = monster->xp + 1;
+				monster->tohit = monster->tohit + 1;
+				break;
+			case 7:
+				strcpy(monster->name, "Strong ");
+				monster->hp = monster->hp * 1.5;
+				monster->chp = monster->chp * 1.5;
+				monster->nhp = monster->nhp * 1.5;
+				monster->xp = monster->xp * 1.5;
+				monster->tohit = monster->tohit * 1.5;
+				break;
+			case 8:
+				strcpy(monster->name, "Powerful ");
+				monster->hp = monster->hp * 2;
+				monster->chp = monster->chp * 2;
+				monster->nhp = monster->nhp * 2;
+				monster->xp = monster->xp * 2;
+				monster->tohit = monster->tohit * 2;
+				break;
+			case 9:
+				strcpy(monster->name, "Imposing ");
+				monster->hp = monster->hp * 5;
+				monster->chp = monster->chp * 5;
+				monster->nhp = monster->nhp * 5;
+				monster->xp = monster->xp * 5;
+				monster->tohit = monster->tohit * 5;
+				break;
+			case 10:
+				strcpy(monster->name, "Godlike ");
+				monster->hp = monster->hp * 10;
+				monster->chp = monster->chp * 10;
+				monster->nhp = monster->nhp * 10;
+				monster->xp = monster->xp * 10;
+				monster->tohit = monster->tohit * 10;
+				break;
+			default:
+				strcpy(monster->armourname, "Average ");
+				break;
+		}
+	strcat(monster->name, enemyname);
+	
+	looper = 0;
+	while(looper < nomonsters)
+		{
+		
+			free(monsters[looper]);
+			looper++;
+		
+		}
+		free(temphold);
 
 
 }
