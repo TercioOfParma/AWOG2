@@ -12,29 +12,30 @@ More design notes incoming. Work will begin on June 27th
 AWOG 2 rough plan:
 
 Day 1: 
-- All loading features functional
-- Basic combat system
-- monsters carry weapon. Armour and a consumable
-- universal structure for all creatures:
-- Base stats( HP, XP, Level):
-- Level influences how much attack is added onto a weapon EG: a sword is 2d6 and the user is level 3, and so gains 2d9
-- Basic menu interface for combat
+- All loading features functional X
+- Basic combat system X
+- monsters carry weapon. Armour and a consumable X
+- universal structure for all creatures: X
+- Base stats( HP, XP, Level): X
+- Level influences how much attack is added onto a weapon EG: a sword is 2d6 and the user is level 3, and so gains 2d9 X
+- Basic menu interface for combat X
 
 
 Day 2:
-Adjectives to items and monsters
-Coloured text 
-Menu for loading saves, new ones, settings, loading a mod
-Modding interface
-More stuff to do on combat menu
+Adjectives to items and monsters X
+Coloured text X
+Menu for loading saves, new ones, settings
+Modding interface X
+More stuff to do on combat menu X
 Saving and autosaving
-Combat effects (bleed, stun, nerve and circulatory damage)
+Combat effects (bleed, stun, nerve and circulatory damage) X
 
 
 Day 3:
 Polish, debugging, any stuff not already done
 Maybe a map
 Linux port
+DOS port
 
 
 
