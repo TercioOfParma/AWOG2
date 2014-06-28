@@ -150,6 +150,7 @@ void combat_menu(creature *player, creature *monster)
 			stunenemy: //a neccessary evil
 			srand(time(0));
 			int enemyai = rand() % 100 + 1;//great AI I know
+			int bleedstundecide = rand() % 100 + 1;
 			int enemyattackdie = monster->weapondice + monster->level;
 			int playerattackdie = player->weapondice + player->level;
 			int playertohit = rand() % 20 + 1;
@@ -206,6 +207,26 @@ void combat_menu(creature *player, creature *monster)
 			printw("6:Flee\n");
 			printw("Your tohit :", player->tohit);
 			scanw("%d", &option);
+			
+		if(bleedstundecide > 50 && player->nhp < 0)
+		{
+			attron(COLOR_PAIR(3));
+			printw("NERVOUS STUN, YOU CANNOT HIT THIS TURN!\n");
+			attroff(COLOR_PAIR(3));
+			goto stunplayer;
+			
+		
+		}
+		if(bleedstundecide < 50 && player->chp < 0)
+		{
+				attron(COLOR_PAIR(2));
+				pbleed = rand() % 6 + 1;
+				printw("YOU BLEED, CAUSING %d DAMAGE!\n", pbleed);
+				attroff(COLOR_PAIR(2));
+				player->hp = player->hp - pbleed;
+		
+		
+		}
 			
 			switch(option)
 			{
@@ -308,7 +329,7 @@ void combat_menu(creature *player, creature *monster)
 			
 			
 			}
-		
+		stunplayer:
 		if(enemyai > 50 && monster->nhp < 0)
 		{
 			attron(COLOR_PAIR(3));
@@ -320,6 +341,7 @@ void combat_menu(creature *player, creature *monster)
 		}
 		if(enemyai < 50 && monster->chp < 0)
 		{
+				ebleed = 0;
 				attron(COLOR_PAIR(2));
 				ebleed = rand() % 6 + 1;
 				printw("BLEED, CAUSING %d DAMAGE!\n", ebleed);
@@ -328,7 +350,7 @@ void combat_menu(creature *player, creature *monster)
 		
 		
 		}
-		else if(enemyai < 80 && enemytohit > monster->tohit + 2)
+		if(enemyai < 80 && enemytohit > monster->tohit + 2)
 			{
 				eholder = eholder * 2;
 				printw("The %s of the %s's %s stings against your skull, causing %d damage, %d nerve damage and %d circulatory damage\n\n", monster->weaponverb, monster->name, monster->weaponname, eholder, enemynervedmg, enemycircdamage);
