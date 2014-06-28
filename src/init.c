@@ -36,12 +36,7 @@ void deinit()
 
 void create_player(creature *player, FILE *wep, FILE *armour, FILE *item)
 {
-	player->name = malloc(sizeof(char) * 40);
-	player->weaponname = malloc(sizeof(char) * 40);
-	player->weaponverb = malloc(sizeof(char) * 40);
-	player->armourname = malloc(sizeof(char) * 40);
-	player->itemname = malloc(sizeof(char) * 40);
-	player->classname = malloc(sizeof(char) * 40);
+
 	
 	player->hp = rand() % 1000 + 20;
 	player->chp = rand() % 20 + 12;

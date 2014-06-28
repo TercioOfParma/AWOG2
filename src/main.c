@@ -18,6 +18,8 @@ int main(int argc, char *argv[])
 	char *pathclass = malloc(sizeof(char) * 50);
 	
 	creature *player = malloc(sizeof(creature));
+	
+	
 		
 		strcpy(pathmon, "monsters.txt");
 		strcpy(pathitem, "items.txt");
@@ -31,11 +33,24 @@ int main(int argc, char *argv[])
 		FILE *weapons = fopen(pathweapon, "r");
 		FILE *class = fopen(pathclass, "r");
 		
+	player->name = malloc(sizeof(char) * 40);
+	player->weaponname = malloc(sizeof(char) * 40);
+	player->weaponverb = malloc(sizeof(char) * 40);
+	player->armourname = malloc(sizeof(char) * 40);
+	player->itemname = malloc(sizeof(char) * 40);
+	player->classname = malloc(sizeof(char) * 40);
+	printw("Please enter your name, or LOAD to Load : ");
+	scanw("%s", player->name);
+	
+	if(strstr(player->name, "LOAD"))
+	{
+		load(player,weapons,armour,items,monsters);
+	
+	}
 	
 	
 	create_player(player,weapons,armour,items);
-	printw("Please enter your name, or LOAD to Load : ");
-	scanw("%s", player->name);
+
 	printw("\nName: %s\n", player->name);
 	printw("You are carrying a %s that does %c damage, this %s with %dd%d damage\n\n",player->weaponname, player->kind, player->weaponverb, player->weapondice, player->weaponvalue);
 	printw("You are wearing a %s that provides %d protection from regular attacks\n\n", player->armourname, player->armourvalue);

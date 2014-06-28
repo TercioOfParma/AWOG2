@@ -1,6 +1,7 @@
 #include <curses.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 #define MAX_BYTESIZE_ITEMS 4
 #define MAX_THINGSTRING_SIZE 200
 #define LINES_H 70
@@ -51,6 +52,9 @@ void generate_weapon(creature *player, FILE *wep);
 void generate_item(creature *player, FILE *item);
 void generate_armour(creature *player, FILE *armour);
 void generate_enemy(creature *monster,FILE *wep, FILE *armour, FILE* item, FILE *mon);
+void save(creature *player, char *filename);
+void load (creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon);
+
 
 
 void combat_menu(creature *player, creature *monster);//main combat engine

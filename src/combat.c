@@ -61,6 +61,7 @@ void mainmenu(creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon)
 {
 
 	int option = 0;
+	char *filename = malloc(sizeof(char) * 40);
 	attron(A_BOLD | A_UNDERLINE);
 	printw("What do You wish to do now?\n\n");
 
@@ -88,8 +89,10 @@ void mainmenu(creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon)
 			show_equipment(player);
 			break;
 		case 3:
-			printw("Not Yet\n\n");
-			getch();
+		clearscr();
+			printw("Please type filename here : ");
+			scanw("%s", filename);
+			save(player, filename);
 			clearscr();
 			break;
 		case 4:
@@ -434,5 +437,127 @@ void combat_menu(creature *player, creature *monster)
 
 
 
+
+}
+
+void save(creature *player, char *filename)
+{
+	//chdir("..");
+	//chdir("..");
+	chdir("Save");
+	
+	FILE* save = fopen(filename, "w");
+	
+	fprintf(save,"AWOG SAVE FILE\n"); //makes sure doesn't read in anything bad
+	fprintf(save,"%s \n", player->name);
+	fprintf(save,"%s \n",player->classname);
+	fprintf(save,"%d \n",player->hp);
+	fprintf(save,"%d \n",player->chp);
+	fprintf(save,"%d \n",player->nhp);
+	fprintf(save,"%d \n",player->xp);
+	fprintf(save,"%d \n",player->level);
+	fprintf(save,"%d \n",player->tohit);
+	fprintf(save,"%s \n",player->weaponname);
+	fprintf(save,"%s \n",player->weaponverb);
+	fprintf(save,"%d \n",player->weaponvalue);
+	fprintf(save,"%d \n",player->weapondice);
+	fprintf(save,"%c \n",player->kind);
+	fprintf(save,"%s \n",player->armourname);
+	fprintf(save,"%d \n",player->armourvalue);
+	fprintf(save,"%s \n",player->itemname);
+	fprintf(save,"%d \n",player->itemhp);
+	fprintf(save,"%d \n",player->itemxp);
+	fprintf(save,"%d \n",player->itemarmour);
+	
+	beep();
+	attron(A_BLINK);
+	printw("COMPLETE: PRESS ANY KEY TO CONTINUE");
+	attroff(A_BLINK);
+	getch();
+	fclose(save);
+	
+	chdir("..");
+	//chdir("data");
+	//chdir("standard");
+
+	return;
+
+
+
+}
+
+void load (creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon)
+{
+	int looper = 0;
+	//chdir("..");
+	//chdir("..");
+	chdir("Save");
+
+	
+	char *filename = malloc(sizeof(char) * 50);
+	char *contents[20];
+	FILE *save; 
+	do 
+	{
+	printw("Please type the name of the file you wish to load or cancel to cancel: ");
+	scanw("%s", filename);
+	if(strstr(filename,"cancel"))
+	{
+	return;
+	
+	}
+	save = fopen(filename, "r");
+	if(!save)
+	{
+		printw("\nFile not found in save directory, please try again\n");
+	
+	
+	}
+	}while(!save);
+	while(looper < 20)
+	{	
+		
+		contents[looper] = malloc(sizeof(char) * MAX_THINGSTRING_SIZE);
+		fgets(contents[looper],MAX_THINGSTRING_SIZE,save);
+		looper++;
+	}
+	
+	if(!strstr(contents[0],"AWOG SAVE FILE"))
+	{
+		printw("FILE INVALID, PLEASE TRY AGAIN (press any key to continue)");
+		getch();
+		load(player,wep,armour,item,mon);
+		
+		
+	}
+	
+	strcpy(player->name, contents[1]);
+	strcpy(player->classname, contents[2]);
+	player->hp = atoi(contents[3]);
+	player->chp = atoi(contents[4]);
+	player->nhp = atoi(contents[5]);
+	player->xp = atoi(contents[6]);
+	player->level = atoi(contents[7]);
+	player->tohit = atoi(contents[8]);
+	strcpy(player->weaponname, contents[9]);
+	strcpy(player->weaponverb, contents[10]);
+	player->weaponvalue = atoi(contents[11]);
+	player->weapondice = atoi(contents[12]);
+	player->kind = contents[13][0];
+	strcpy(player->armourname, contents[14]);
+	player->armourvalue = atoi(contents[15]);
+	strcpy(player->itemname, contents[16]);
+	player->itemhp = atoi(contents[17]);
+	player->itemxp = atoi(contents[18]);
+	player->itemarmour = atoi(contents[19]);
+	
+	
+	chdir("..");
+	//chdir("data");
+	//chdir(modfolder);
+	
+	
+	mainmenu(player,wep,armour,item,mon);
+	
 
 }
