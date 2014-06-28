@@ -27,6 +27,9 @@ int main(int argc, char *argv[])
 		strcpy(pathclass, "classes.txt");
 		strcpy(pathweapon, "weapons.txt");
 		
+		chdir("data");
+		chdir("standard");
+		
 		FILE *monsters = fopen(pathmon,"r");
 		FILE *items = fopen(pathitem,"r");
 		FILE *armour =  fopen(patharmour, "r");

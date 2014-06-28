@@ -442,8 +442,8 @@ void combat_menu(creature *player, creature *monster)
 
 void save(creature *player, char *filename)
 {
-	//chdir("..");
-	//chdir("..");
+	chdir("..");
+	chdir("..");
 	chdir("Save");
 	
 	FILE* save = fopen(filename, "w");
@@ -477,8 +477,8 @@ void save(creature *player, char *filename)
 	fclose(save);
 	
 	chdir("..");
-	//chdir("data");
-	//chdir("standard");
+	chdir("data");
+	chdir("standard");
 
 	return;
 
@@ -489,8 +489,8 @@ void save(creature *player, char *filename)
 void load (creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon)
 {
 	int looper = 0;
-	//chdir("..");
-	//chdir("..");
+	chdir("..");
+	chdir("..");
 	chdir("Save");
 
 	
@@ -553,8 +553,8 @@ void load (creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon)
 	
 	
 	chdir("..");
-	//chdir("data");
-	//chdir(modfolder);
+	chdir("data");
+	chdir("standard");
 	
 	
 	mainmenu(player,wep,armour,item,mon);
