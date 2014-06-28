@@ -1,0 +1,20 @@
+AWOG SAVE FILE
+derp 
+Barbarian 
+1216 
+31 
+24 
+0 
+1 
+4 
+Old Sabre 
+slash 
+4 
+3 
+e 
+Masterwork Force Field 
+60 
+Great Toffee 
+7 
+15 
+0 

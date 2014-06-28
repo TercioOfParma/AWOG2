@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 	char *patharmour = malloc(sizeof(char) * 50);
 	char *pathweapon = malloc(sizeof(char) * 50);
 	char *pathclass = malloc(sizeof(char) * 50);
-	
+	char *modpath = malloc(sizeof(char) * 50);
 	creature *player = malloc(sizeof(creature));
 	
 	
@@ -26,9 +26,18 @@ int main(int argc, char *argv[])
 		strcpy(patharmour, "armour.txt");
 		strcpy(pathclass, "classes.txt");
 		strcpy(pathweapon, "weapons.txt");
-		
+		if(argv[1])
+		{
+			strcpy(modpath, argv[1]);
+			printw("Worked : %s\n", modpath);
+			getch();
+		}
+		else
+		{
+			strcpy(modpath, "standard");
+		}
 		chdir("data");
-		chdir("standard");
+		chdir(modpath);
 		
 		FILE *monsters = fopen(pathmon,"r");
 		FILE *items = fopen(pathitem,"r");
@@ -47,7 +56,7 @@ int main(int argc, char *argv[])
 	
 	if(strstr(player->name, "LOAD"))
 	{
-		load(player,weapons,armour,items,monsters);
+		load(player,weapons,armour,items,monsters,modpath);
 	
 	}
 	
@@ -61,7 +70,7 @@ int main(int argc, char *argv[])
 	printw("This Is You NOW, Now please enter the ARENA of Generica!\n\n Please press any key to continue");
 	getch();
 	classselect(player,class);
-	mainmenu(player,weapons,armour,items,monsters);
+	mainmenu(player,weapons,armour,items,monsters, modpath);
 	deinit();
 
 

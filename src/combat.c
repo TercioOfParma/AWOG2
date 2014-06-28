@@ -57,7 +57,7 @@ void classselect(creature *player, FILE *classfile)
 
 
 
-void mainmenu(creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon)
+void mainmenu(creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon, char *modpath)
 {
 
 	int option = 0;
@@ -92,7 +92,7 @@ void mainmenu(creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon)
 		clearscr();
 			printw("Please type filename here : ");
 			scanw("%s", filename);
-			save(player, filename);
+			save(player, filename, modpath);
 			clearscr();
 			break;
 		case 4:
@@ -151,6 +151,7 @@ void combat_menu(creature *player, creature *monster)
 	while(monster->hp >= 0 && player->hp > 0)
 		{
 			stunenemy: //a neccessary evil
+			clearscr();
 			srand(time(0));
 			int enemyai = rand() % 100 + 1;//great AI I know
 			int bleedstundecide = rand() % 100 + 1;
@@ -324,6 +325,7 @@ void combat_menu(creature *player, creature *monster)
 					case 6:
 						printw("You flee like a coward");
 						getch();
+						clearscr();
 						return;
 						break;
 					default:
@@ -440,7 +442,7 @@ void combat_menu(creature *player, creature *monster)
 
 }
 
-void save(creature *player, char *filename)
+void save(creature *player, char *filename, char *modpath)
 {
 	chdir("..");
 	chdir("..");
@@ -478,7 +480,7 @@ void save(creature *player, char *filename)
 	
 	chdir("..");
 	chdir("data");
-	chdir("standard");
+	chdir(modpath);
 
 	return;
 
@@ -486,7 +488,7 @@ void save(creature *player, char *filename)
 
 }
 
-void load (creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon)
+void load (creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon, char *modpath)
 {
 	int looper = 0;
 	chdir("..");
@@ -526,7 +528,7 @@ void load (creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon)
 	{
 		printw("FILE INVALID, PLEASE TRY AGAIN (press any key to continue)");
 		getch();
-		load(player,wep,armour,item,mon);
+		load(player,wep,armour,item,mon, modpath);
 		
 		
 	}
@@ -554,10 +556,10 @@ void load (creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon)
 	
 	chdir("..");
 	chdir("data");
-	chdir("standard");
+	chdir(modpath);
 	
 	
-	mainmenu(player,wep,armour,item,mon);
+	mainmenu(player,wep,armour,item,mon,modpath);
 	
 
 }

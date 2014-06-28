@@ -58,12 +58,12 @@ void create_player(creature *player, FILE *wep, FILE *armour, FILE *item)
 void generate_weapon(creature *player, FILE *wep)
 {
 	rewind(wep);
-	int noweapons = 50;
+	int noweapons = 0;
 	int looper = 0;
 	char *temphold = malloc(sizeof(char) * MAX_BYTESIZE_ITEMS);
 	char *weaponname, *weaponkind, *weaponsides, *weapondie, *weaponverb;
 	fgets(temphold, MAX_BYTESIZE_ITEMS, wep);
-	
+	noweapons = atoi(temphold);
 	char *weapons[noweapons];
 
 	

@@ -52,13 +52,13 @@ void generate_weapon(creature *player, FILE *wep);
 void generate_item(creature *player, FILE *item);
 void generate_armour(creature *player, FILE *armour);
 void generate_enemy(creature *monster,FILE *wep, FILE *armour, FILE* item, FILE *mon);
-void save(creature *player, char *filename);
-void load (creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon);
+void save(creature *player, char *filename, char *modpath);
+void load (creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon, char *modpath);
 
 
 
 void combat_menu(creature *player, creature *monster);//main combat engine
 void droppickup(creature *player, creature *monster);//handles pickups and such
-void mainmenu(creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon);
+void mainmenu(creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon, char *modpath);
 void classselect(creature *player, FILE *classfile);
 void show_equipment(creature *player);

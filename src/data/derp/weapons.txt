@@ -1,0 +1,2 @@
+1
+Katana,edge,12,2,slash,
