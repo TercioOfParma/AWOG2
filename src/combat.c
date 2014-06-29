@@ -61,6 +61,12 @@ void mainmenu(creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon, 
 {
 
 	int option = 0;
+	static int xp, hpbonus, chpbonus, tohitbonus, nhpbonus;  
+	xp = 100;
+	hpbonus = 100;
+	chpbonus = 12;
+	nhpbonus = 12;
+	tohitbonus = 1;
 	char *filename = malloc(sizeof(char) * 40);
 	attron(A_BOLD | A_UNDERLINE);
 	printw("What do You wish to do now?\n\n");
@@ -70,6 +76,23 @@ void mainmenu(creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon, 
 	
 	while(1 == 1)
 	{
+	if(player->xp > xp)
+	{
+		printw("LEVEL UP!");
+		player->hp += hpbonus;
+		player->chp += chpbonus;
+		player->tohit -= tohitbonus;
+		player->nhp += nhpbonus;
+	
+		xp *= 3;
+		hpbonus *= 2;
+		chpbonus *= 2;
+		nhpbonus *= 2;
+		tohitbonus *= 2;
+		getch();
+		
+	}
+	
 	attron(A_BLINK);
 	printw("1 : FIGHT!\n");
 	attroff(A_BLINK);
@@ -239,8 +262,9 @@ void combat_menu(creature *player, creature *monster)
 					{
 
 						pholder = pholder * 2; //there are easier ways of doing this however this is for what little readability I can salvage
-						printw("You %s the %s's head directly!\n This causes %d damage, %d nerve damage and %d circulatory damage\n\n", player->weaponverb, monster->name, pholder, playernervedmg,playercircdamage);
-						monster->hp -= pholder;
+						printw("You %s the %s's head directly!\n This causes %d damage, %d nerve damage and %d circulatory damage\n\n", monster->weaponverb, monster->name, pholder, playernervedmg,playercircdamage);
+						monster->hp = monster->hp -  (pholder/3) * 2;
+						monster->armourvalue = monster->armourvalue - (pholder / 3);
 						monster->nhp -= playernervedmg;
 						monster->chp -= playercircdamage;
 					}
@@ -248,7 +272,8 @@ void combat_menu(creature *player, creature *monster)
 					{
 						pholder = pholder * 1.5;
 						printw("You slip slightly and miss the head of the %s. However, you %s the %s in the torso for %d damage, %d nerve damage, and %d circulatory damage\n\n", monster->name, player->weaponverb, monster->name, pholder, playernervedmg, playercircdamage);
-						monster->hp -= pholder;
+						monster->hp = monster->hp -  (pholder/3) * 2;
+						monster->armourvalue = monster->armourvalue - (pholder / 3);
 						monster->nhp -= playernervedmg;
 						monster->chp -= playercircdamage;
 					}
@@ -262,14 +287,16 @@ void combat_menu(creature *player, creature *monster)
 					{
 						pholder = pholder * 1.5;
 						printw("You %s the %s in the chest. This causes %d damage, %d nerve damage and %d circulatory damage\n\n", player->weaponverb, monster->name, pholder,playernervedmg,playercircdamage); 
-						monster->hp -= pholder;
+						monster->hp = monster->hp -  (pholder/3) * 2;
+						monster->armourvalue = monster->armourvalue - (eholder / 3);
 						monster->nhp -= playernervedmg;
 						monster->chp -= playercircdamage;
 					}
 					else if(playertohit > player->tohit)
 					{
 						printw("You miss the torso barely, but you still are able to %s the %s's upper extremities, causing %d damage, %d nerve damage and %d circulatory damage\n\n",player->weaponverb, monster->name, pholder,playernervedmg,playercircdamage);
-						monster->hp -= pholder;
+						monster->hp = monster->hp -  (pholder/3) * 2;
+						monster->armourvalue = monster->armourvalue - (pholder / 3);
 						monster->nhp -= playernervedmg;
 						monster->chp -= playercircdamage;
 					
@@ -286,7 +313,8 @@ void combat_menu(creature *player, creature *monster)
 					{
 					
 						printw("You quickly %s the %s's knees, inflicting %d damage, %d nerve damage and %d circulatory damage\n\n", player->weaponverb, monster->name, pholder,playernervedmg,playercircdamage);
-						monster->hp -= pholder;
+						monster->hp = monster->hp -  (pholder/3) * 2;
+						monster->armourvalue = monster->armourvalue - (pholder / 3);
 						monster->nhp -= playernervedmg;
 						monster->chp -= playercircdamage;
 					
@@ -303,7 +331,8 @@ void combat_menu(creature *player, creature *monster)
 					{
 					
 						printw("You %s the %s's arms with finesse, inflicting %d damage, %d nerve damage and %d circulatory damage\n\n", player->weaponverb, monster->name, pholder,playernervedmg,playercircdamage);
-						monster->hp -= pholder;
+						monster->hp = monster->hp -  (pholder/3) * 2;
+						monster->armourvalue = monster->armourvalue - (pholder / 3);
 						monster->nhp -= playernervedmg;
 						monster->chp -= playercircdamage;
 					
@@ -359,7 +388,8 @@ void combat_menu(creature *player, creature *monster)
 			{
 				eholder = eholder * 2;
 				printw("The %s of the %s's %s stings against your skull, causing %d damage, %d nerve damage and %d circulatory damage\n\n", monster->weaponverb, monster->name, monster->weaponname, eholder, enemynervedmg, enemycircdamage);
-				player->hp = player->hp -  eholder;
+				player->hp = player->hp -  (eholder/3) * 2;
+				player->armourvalue = player->armourvalue - (eholder / 3);
 				player->nhp = player->nhp - enemynervedmg;
 				player->chp = player->chp - enemycircdamage;
 			
@@ -368,7 +398,8 @@ void combat_menu(creature *player, creature *monster)
 			{
 				eholder = eholder * 1.5;
 				printw("The %s of the %s's %s roars in pain against your thorax, causing %d damage, %d nerve damage and %d circulatory damage\n\n", monster->weaponverb, monster->name, monster->weaponname, eholder, enemynervedmg, enemycircdamage);
-				player->hp = player->hp -  eholder;
+				player->hp = player->hp -  (eholder/3) * 2;
+				player->armourvalue = player->armourvalue - (eholder / 3);
 				player->nhp = player->nhp - enemynervedmg;
 				player->chp = player->chp - enemycircdamage;
 			
@@ -376,7 +407,8 @@ void combat_menu(creature *player, creature *monster)
 		else if(enemyai < 85 && enemytohit > monster->tohit)
 		{
 				printw("Your arm is %s by the %s's %s, causing %d damage, %d nerve damage and %d circulatory damage\n\n ", monster->weaponverb, monster->name, monster->weaponname, eholder, enemynervedmg, enemycircdamage);
-				player->hp = player->hp -  eholder;
+				player->hp = player->hp -  (eholder/3) * 2;
+				player->armourvalue = player->armourvalue - (eholder / 3);
 				player->nhp = player->nhp - enemynervedmg;
 				player->chp = player->chp - enemycircdamage;
 		
@@ -385,7 +417,8 @@ void combat_menu(creature *player, creature *monster)
 		else if(enemyai < 90 && enemytohit > monster->tohit)
 		{
 				printw("Your legs is %s by the %s's %s, causing %d damage, %d nerve damage and %d circulatory damage\n\n ", monster->weaponverb, monster->name, monster->weaponname, eholder, enemynervedmg, enemycircdamage);
-				player->hp = player->hp -  eholder;
+				player->hp = player->hp -  (eholder/3) * 2;
+				player->armourvalue = player->armourvalue - (eholder / 3);
 				player->nhp = player->nhp - enemynervedmg;
 				player->chp = player->chp - enemycircdamage;
 		
@@ -401,7 +434,8 @@ void combat_menu(creature *player, creature *monster)
 			monster->itemhp = 0;
 			monster->itemxp = 0;
 			monster->itemarmour = 0;
-		
+			monster->itemname = malloc(sizeof(char) * 40);
+			strcpy(monster->itemname, "EMPTY");
 		
 		
 		}
@@ -432,7 +466,57 @@ void combat_menu(creature *player, creature *monster)
 			clearscr();
 			attron(A_BLINK);
 			printw("You have killed the %s, please press enter to continue\n", monster->name);
+			attroff(A_BLINK);
+			printw("Please choose an item to pickup from the monster (0 for nothing)\n\n");
+			printw("1: %s, %dd%d damage\n\n", monster->weaponname, monster->weapondice, monster->weaponvalue);
+			printw("2: %s, %d protection\n\n", monster->armourname, monster->armourvalue);
+			if(strstr(monster->name, "EMPTY"))//for some strange reason this means that the monster ISN'T carrying an empty consumable
+			{
+			printw("3: %s, providing %d hp, %d xp, and %d armour\n\n", monster->itemname, monster->itemhp, monster->itemxp, monster->itemarmour);
+			
+			
+			}
+			scanw("%d", &option);
+			
+			if(option == 1)
+			{
+				player->weaponname = malloc(sizeof(char) * 40); //clears the strings
+				player->weaponverb = malloc(sizeof(char) * 40);
+				strcpy(player->weaponname, monster->weaponname);
+				strcpy(player->weaponverb, monster->weaponverb);
+				player->weapondice = monster->weapondice;
+				player->weaponvalue = monster->weaponvalue;
+			
+			
+			
+			}
+			else if(option == 2)
+			{
+				player->armourname = malloc(sizeof(char) * 40);
+				strcpy(player->armourname, monster->armourname);
+				player->armourvalue = monster->armourvalue;
+			
+			
+			}
+			else if(option == 3 && strstr(monster->itemname, "EMPTY"))
+			{
+				player->itemname = malloc(sizeof(char) * 40);
+				strcpy(player->itemname, monster->itemname);
+				player->itemhp = monster->itemhp;
+				player->itemxp = monster->itemxp;
+				player->itemarmour = monster->itemarmour;
+			
+			
+			}
+			else
+			{
+				printw("alright suit yourself\n");
+			
+			
+			}
+			player->xp += monster->xp;
 			getch();
+			clearscr();
 			return;
 		
 		}

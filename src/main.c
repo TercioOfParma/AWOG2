@@ -29,8 +29,6 @@ int main(int argc, char *argv[])
 		if(argv[1])
 		{
 			strcpy(modpath, argv[1]);
-			printw("Worked : %s\n", modpath);
-			getch();
 		}
 		else
 		{
