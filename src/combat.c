@@ -470,7 +470,7 @@ void combat_menu(creature *player, creature *monster)
 			printw("Please choose an item to pickup from the monster (0 for nothing)\n\n");
 			printw("1: %s, %dd%d damage\n\n", monster->weaponname, monster->weapondice, monster->weaponvalue);
 			printw("2: %s, %d protection\n\n", monster->armourname, monster->armourvalue);
-			if(strstr(monster->name, "EMPTY"))//for some strange reason this means that the monster ISN'T carrying an empty consumable
+			if(!strstr(monster->name, "EMPTY"))//for some strange reason this means that the monster ISN'T carrying an empty consumable
 			{
 			printw("3: %s, providing %d hp, %d xp, and %d armour\n\n", monster->itemname, monster->itemhp, monster->itemxp, monster->itemarmour);
 			
@@ -498,7 +498,7 @@ void combat_menu(creature *player, creature *monster)
 			
 			
 			}
-			else if(option == 3 && strstr(monster->itemname, "EMPTY"))
+			else if(option == 3 && !strstr(monster->itemname, "EMPTY"))
 			{
 				player->itemname = malloc(sizeof(char) * 40);
 				strcpy(player->itemname, monster->itemname);
