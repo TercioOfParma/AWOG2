@@ -116,3 +116,12 @@ Classes will be editable and addable in the same way as enemies and such are, an
 in the form
 
 classname, bonus hp, attack modifier, xp modifier(representative of the skill of a base class so different levels)
+
+
+IMPORTANT: TO COMPILE ON YOUR PLATFORM
+
+
+Select Makefilewin and rename makefile if you are on windows
+select Makefilelin for linux and rename the same
+
+This is known not to work on the latest version of FreeDOS

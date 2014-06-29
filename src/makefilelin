@@ -1,0 +1,8 @@
+all:
+	gcc	-c	-g	basic.h	-Wall
+	gcc	-c	-g	init.c	-Wall
+	gcc	-c	-g	combat.c	-Wall
+	gcc	-o	AWOG2	main.c	init.o	combat.o	-lncurses	-g	-Wall
+	rm	basic.h.gch
+	rm	init.o
+	rm	combat.o
