@@ -15,8 +15,8 @@ void init()
 	start_color();
 	
 	init_pair(1, COLOR_WHITE, COLOR_BLACK); //main default background
-	init_pair(2, COLOR_RED, COLOR_BLACK); //bleeding text
-	init_pair(3, COLOR_BLUE, COLOR_BLACK);//nerve damage text
+	init_pair(2, COLOR_RED, COLOR_WHITE); //bleeding text
+	init_pair(3, COLOR_BLUE, COLOR_	WHITE);//nerve damage text
 	init_pair(4, COLOR_GREEN, COLOR_BLACK); //critical
 	
 	
@@ -101,7 +101,7 @@ void generate_weapon(creature *player, FILE *wep)
 	player->weapondice = atoi(weapondie);
 	weaponverb = strtok(NULL, ",");
 	strcpy(player->weaponverb,weaponverb);
-		switch(quality)
+		switch(quality)//will make this file portable in AWOG 3 :D
 		{
 			case 1:
 				strcpy(player->weaponname, "Barely Functional ");
