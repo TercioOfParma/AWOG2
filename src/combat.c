@@ -97,7 +97,7 @@ void mainmenu(creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon, 
 	printw("1 : FIGHT!\n");
 	attroff(A_BLINK);
 	printw("2: Check Equipment\n");
-	printw("3: Save [WIP NOT FUNCTIONAL]\n");
+	printw("3: Save \n");
 	printw("4: Quit without Saving\n");
 	scanw("%d", &option);
 	
@@ -169,20 +169,27 @@ void combat_menu(creature *player, creature *monster)
 
 	getch();
 	clearscr();
+	int looper, pholder, eholder, playernervedmg, playercircdamage, enemycircdamage, enemynervedmg, pbleed, ebleed;
+	int enemyai = rand() % 100 + 1;//great AI I know
+	int bleedstundecide = rand() % 100 + 1;
+	int enemyattackdie = monster->weapondice + monster->level;
+	int playerattackdie = player->weapondice + player->level;
+	int playertohit = rand() % 20 + 1;
+	int enemytohit = rand() % 20 + 1;
 	
 	
 	while(monster->hp >= 0 && player->hp > 0)
 		{
-			stunenemy: //a neccessary evil
+			stunenemy: //a neccessary evil, dijstrka wouldn't be proud
 			clearscr();
 			srand(time(0));
-			int enemyai = rand() % 100 + 1;//great AI I know
-			int bleedstundecide = rand() % 100 + 1;
-			int enemyattackdie = monster->weapondice + monster->level;
-			int playerattackdie = player->weapondice + player->level;
-			int playertohit = rand() % 20 + 1;
-			int enemytohit = rand() % 20 + 1;
-			int looper, pholder, eholder, playernervedmg, playercircdamage, enemycircdamage, enemynervedmg, pbleed, ebleed;
+			enemyai = rand() % 100 + 1;//great AI I know
+			bleedstundecide = rand() % 100 + 1;
+			enemyattackdie = monster->weapondice + monster->level;
+			playerattackdie = player->weapondice + player->level;
+			playertohit = rand() % 20 + 1;
+			enemytohit = rand() % 20 + 1;
+			
 			looper = 0;
 			pholder =0;
 			eholder = 0;
@@ -346,7 +353,7 @@ void combat_menu(creature *player, creature *monster)
 					break;
 					case 5:
 							printw("You consume your %s, granting you %d health, %d xp and %d armour\n\n", player->itemname, player->itemhp, player->itemxp, player->itemarmour);
-							player->itemname = malloc(sizeof(char) * 40);
+							player->itemname = malloc(sizeof(char) * 40); //yes you can technically consume something that doesn't exist
 							player->itemhp = 0;
 							player->itemxp = 0;
 							player->itemarmour = 0;
@@ -367,7 +374,7 @@ void combat_menu(creature *player, creature *monster)
 		if(enemyai > 50 && monster->nhp < 0)
 		{
 			attron(COLOR_PAIR(3));
-			printw("NERVOUS STUN, CANNOT HIT THIS TURN!\n");
+			printw("NERVOUS STUN, THE %s CANNOT HIT THIS TURN!\n", monster->name);
 			attroff(COLOR_PAIR(3));
 			goto stunenemy;
 			
@@ -476,6 +483,7 @@ void combat_menu(creature *player, creature *monster)
 			
 			
 			}
+			option = 0;
 			scanw("%d", &option);
 			
 			if(option == 1)
@@ -486,6 +494,8 @@ void combat_menu(creature *player, creature *monster)
 				strcpy(player->weaponverb, monster->weaponverb);
 				player->weapondice = monster->weapondice;
 				player->weaponvalue = monster->weaponvalue;
+				printw("You pick up the %s\n", player->weaponname);
+				
 			
 			
 			
@@ -495,6 +505,7 @@ void combat_menu(creature *player, creature *monster)
 				player->armourname = malloc(sizeof(char) * 40);
 				strcpy(player->armourname, monster->armourname);
 				player->armourvalue = monster->armourvalue;
+				printw("You pick up the %s\n", player->armourname);
 			
 			
 			}
@@ -505,12 +516,13 @@ void combat_menu(creature *player, creature *monster)
 				player->itemhp = monster->itemhp;
 				player->itemxp = monster->itemxp;
 				player->itemarmour = monster->itemarmour;
+				printw("You pick up the %s\n", player->itemname);
 			
 			
 			}
 			else
 			{
-				printw("alright suit yourself\n");
+				printw("Alright suit yourself, you get nothing and nothing changes in your inventory\n");
 			
 			
 			}
@@ -641,6 +653,9 @@ void load (creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon, cha
 	chdir("..");
 	chdir("data");
 	chdir(modpath);
+	beep();
+	printw("Game file loaded successfully, please press any key to continue");
+	getch();
 	
 	
 	mainmenu(player,wep,armour,item,mon,modpath);
