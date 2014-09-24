@@ -1,3 +1,13 @@
+Things to be added at some point before I die:
+
+  Destorying objects and attempting to keep memory clear
+  Compression of saves of some kind
+  Better and easier data file editing (perhaps even an editor for command line users)
+  More data (so more monsters to face and stuff to find)
+  More structure to the game (maybe a randomly generated map that would be traversed in a way akin to Zork)
+  Endgame (aside from dying, maybe finding a mysterious amulet or something)
+  
+
 NOTE, PLEASE ADD A FOLDER CALLED 'Save' TO THE SRC FOLDER OTHERWISE SAVE AND LOAD FUNCTIONS WILL FAIL. FOR SOME REASON GITHUB DECIDED TO DELETE THE EMPTY DIRECTORY.
 
 
