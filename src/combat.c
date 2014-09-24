@@ -597,20 +597,20 @@ void load (creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon, cha
 	FILE *save; 
 	do 
 	{
-	printw("Please type the name of the file you wish to load or cancel to cancel: ");
-	scanw("%s", filename);
-	if(strstr(filename,"cancel"))
-	{
-	return;
+		printw("Please type the name of the file you wish to load or cancel to cancel: ");
+		scanw("%s", filename);
+		if(strstr(filename,"cancel"))
+		{
+			return;
 	
-	}
-	save = fopen(filename, "r");
-	if(!save)
-	{
-		printw("\nFile not found in save directory, please try again\n");
+		}
+		save = fopen(filename, "r");
+		if(!save)
+		{
+			printw("\nFile not found in save directory, please try again\n");
 	
 	
-	}
+		}
 	}while(!save);
 	while(looper < 20)
 	{	
