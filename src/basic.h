@@ -20,19 +20,19 @@ typedef struct{
 	/*
 		name = name of creature
 		weaponname = name of weapon
-		weaponverb = verb of the weapon when attacking
+		weaponverb = verb of the weapon when attacking outputted
 		armourname = name of armour
-		itemname = name of item
+		itemname = name of item carried
 		classname = name of the class the creature is in (player only)
 		
 	
 		hp = base hp
 		chp= circulatory hp (essentially how many points before bleeding the creature is
 		nhp= nervous hp (the number before the creature begins to experience stuns half of the time
-		xp = experience dropped
-		armourvalue= the amount of armour you have (takes half an attack)
-		weapon dice = how many dice a weapon has
-		weapon value = how many sides the dice have
+		xp = experience dropped on the entity being killed
+		armourvalue= the amount of armour you have (takes half an attack until 0)
+		weapon dice = how many damage dice a weapon has
+		weapon value = how many sides the damage dice have
 		itemhp = modification to hp
 		itemxp = modification to xp
 		itemarmour = modification to armour
@@ -40,7 +40,7 @@ typedef struct{
 		tohit = the required roll on a d20 to hit
 		
 		
-		kind = a differentiator between blunt and edged weapons
+		kind = a differentiator between blunt and edged weapons, which influences nervous and circulatory damage
 	
 	*/
 
