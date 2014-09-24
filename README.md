@@ -8,7 +8,7 @@ Things to be added at some point before I die:
   Endgame (aside from dying, maybe finding a mysterious amulet or something)
   
 
-NOTE, PLEASE ADD A FOLDER CALLED 'Save' TO THE SRC FOLDER OTHERWISE SAVE AND LOAD FUNCTIONS WILL FAIL. FOR SOME REASON GITHUB DECIDED TO DELETE THE EMPTY DIRECTORY.
+
 
 
 AWOG2
