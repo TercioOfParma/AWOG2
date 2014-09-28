@@ -132,7 +132,7 @@ void mainmenu(creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon, 
 			clearscr();
 			break;
 		case 4:
-			deinit();
+			return;
 			break;
 	
 	
@@ -284,7 +284,10 @@ void combat_menu(creature *player, creature *monster)
 						pholder = pholder * 2; //there are easier ways of doing this however this is for what little readability I can salvage
 						printw("You %s the %s's head directly!\n This causes %d damage, %d nerve damage and %d circulatory damage\n\n", monster->weaponverb, monster->name, pholder, playernervedmg,playercircdamage);
 						monster->hp = monster->hp -  (pholder/3) * 2;
-						monster->armourvalue = monster->armourvalue - (pholder / 3);
+						if(monster->armourvalue > 0)
+						{
+							monster->armourvalue = monster->armourvalue - (pholder / 3);
+						}
 						monster->nhp -= playernervedmg;
 						monster->chp -= playercircdamage;
 					}
@@ -293,7 +296,10 @@ void combat_menu(creature *player, creature *monster)
 						pholder = pholder * 1.5;
 						printw("You slip slightly and miss the head of the %s. However, you %s the %s in the torso for %d damage, %d nerve damage, and %d circulatory damage\n\n", monster->name, player->weaponverb, monster->name, pholder, playernervedmg, playercircdamage);
 						monster->hp = monster->hp -  (pholder/3) * 2;
-						monster->armourvalue = monster->armourvalue - (pholder / 3);
+						if(monster->armourvalue > 0)
+						{
+							monster->armourvalue = monster->armourvalue - (pholder / 3);
+						}
 						monster->nhp -= playernervedmg;
 						monster->chp -= playercircdamage;
 					}
@@ -308,7 +314,10 @@ void combat_menu(creature *player, creature *monster)
 						pholder = pholder * 1.5;
 						printw("You %s the %s in the chest. This causes %d damage, %d nerve damage and %d circulatory damage\n\n", player->weaponverb, monster->name, pholder,playernervedmg,playercircdamage); 
 						monster->hp = monster->hp -  (pholder/3) * 2;
-						monster->armourvalue = monster->armourvalue - (eholder / 3);
+						if(monster->armourvalue > 0)
+						{
+							monster->armourvalue = monster->armourvalue - (eholder / 3);
+						}
 						monster->nhp -= playernervedmg;
 						monster->chp -= playercircdamage;
 					}
@@ -316,7 +325,10 @@ void combat_menu(creature *player, creature *monster)
 					{
 						printw("You miss the torso barely, but you still are able to %s the %s's upper extremities, causing %d damage, %d nerve damage and %d circulatory damage\n\n",player->weaponverb, monster->name, pholder,playernervedmg,playercircdamage);
 						monster->hp = monster->hp -  (pholder/3) * 2;
-						monster->armourvalue = monster->armourvalue - (pholder / 3);
+						if(monster->armourvalue > 0)
+						{
+							monster->armourvalue = monster->armourvalue - (pholder / 3);
+						}
 						monster->nhp -= playernervedmg;
 						monster->chp -= playercircdamage;
 					
@@ -334,7 +346,10 @@ void combat_menu(creature *player, creature *monster)
 					
 						printw("You quickly %s the %s's knees, inflicting %d damage, %d nerve damage and %d circulatory damage\n\n", player->weaponverb, monster->name, pholder,playernervedmg,playercircdamage);
 						monster->hp = monster->hp -  (pholder/3) * 2;
-						monster->armourvalue = monster->armourvalue - (pholder / 3);
+						if(monster->armourvalue > 0)
+						{
+							monster->armourvalue = monster->armourvalue - (pholder / 3);
+						}
 						monster->nhp -= playernervedmg;
 						monster->chp -= playercircdamage;
 					
@@ -352,7 +367,10 @@ void combat_menu(creature *player, creature *monster)
 					
 						printw("You %s the %s's arms with finesse, inflicting %d damage, %d nerve damage and %d circulatory damage\n\n", player->weaponverb, monster->name, pholder,playernervedmg,playercircdamage);
 						monster->hp = monster->hp -  (pholder/3) * 2;
-						monster->armourvalue = monster->armourvalue - (pholder / 3);
+						if(monster->armourvalue > 0)
+						{
+							monster->armourvalue = monster->armourvalue - (pholder / 3);
+						}
 						monster->nhp -= playernervedmg;
 						monster->chp -= playercircdamage;
 					
@@ -419,7 +437,10 @@ void combat_menu(creature *player, creature *monster)
 				eholder = eholder * 1.5;
 				printw("The %s of the %s's %s roars in pain against your thorax, causing %d damage, %d nerve damage and %d circulatory damage\n\n", monster->weaponverb, monster->name, monster->weaponname, eholder, enemynervedmg, enemycircdamage);
 				player->hp = player->hp -  (eholder/3) * 2;
-				player->armourvalue = player->armourvalue - (eholder / 3);
+				if(player->armourvalue > 0)
+				{
+					player->armourvalue = player->armourvalue - (eholder / 3);
+				}
 				player->nhp = player->nhp - enemynervedmg;
 				player->chp = player->chp - enemycircdamage;
 			
@@ -428,7 +449,10 @@ void combat_menu(creature *player, creature *monster)
 		{
 				printw("Your arm is %s by the %s's %s, causing %d damage, %d nerve damage and %d circulatory damage\n\n ", monster->weaponverb, monster->name, monster->weaponname, eholder, enemynervedmg, enemycircdamage);
 				player->hp = player->hp -  (eholder/3) * 2;
-				player->armourvalue = player->armourvalue - (eholder / 3);
+				if(player->armourvalue > 0)
+				{
+					player->armourvalue = player->armourvalue - (eholder / 3);
+				}
 				player->nhp = player->nhp - enemynervedmg;
 				player->chp = player->chp - enemycircdamage;
 		
@@ -438,7 +462,10 @@ void combat_menu(creature *player, creature *monster)
 		{
 				printw("Your legs is %s by the %s's %s, causing %d damage, %d nerve damage and %d circulatory damage\n\n ", monster->weaponverb, monster->name, monster->weaponname, eholder, enemynervedmg, enemycircdamage);
 				player->hp = player->hp -  (eholder/3) * 2;
-				player->armourvalue = player->armourvalue - (eholder / 3);
+				if(player->armourvalue > 0)
+				{
+					player->armourvalue = player->armourvalue - (eholder / 3);
+				}
 				player->nhp = player->nhp - enemynervedmg;
 				player->chp = player->chp - enemycircdamage;
 		
@@ -597,7 +624,7 @@ void save(creature *player, char *filename, char *modpath)
 
 }
 
-void load (creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon, char *modpath)
+int load (creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon, char *modpath)
 {
 	int looper = 0;
 	chdir("..");
@@ -614,7 +641,7 @@ void load (creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon, cha
 		scanw("%s", filename);
 		if(strstr(filename,"cancel"))
 		{
-			return;
+			return 0;
 	
 		}
 		save = fopen(filename, "r");
@@ -672,6 +699,7 @@ void load (creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon, cha
 	
 	
 	mainmenu(player,wep,armour,item,mon,modpath);
+	return 1;
 	
 
 }

@@ -18,6 +18,7 @@ int main(int argc, char *argv[])
 	char *pathclass = malloc(sizeof(char) * 50);
 	char *modpath = malloc(sizeof(char) * 50);
 	creature *player = malloc(sizeof(creature));
+	int choice = 'r';
 	
 	
 		
@@ -54,22 +55,34 @@ int main(int argc, char *argv[])
 	
 	if(strstr(player->name, "LOAD"))
 	{
-		load(player,weapons,armour,items,monsters,modpath);
+		if(load(player,weapons,armour,items,monsters,modpath) == 1)
+		{
+			goto endgamefromload;
+		}
 	
 	}
 	
 	
-	create_player(player,weapons,armour,items);
+	
 
-	printw("\nName: %s\n", player->name);
-	printw("You are carrying a %s that does %c damage, this %s with %dd%d damage\n\n",player->weaponname, player->kind, player->weaponverb, player->weapondice, player->weaponvalue);
-	printw("You are wearing a %s that provides %d protection from regular attacks\n\n", player->armourname, player->armourvalue);
-	printw("The other item that you carry is an %s, and has : %d hp impact; %d xp impact and %d armour impact\n\n", player->itemname, player->itemhp, player->itemxp, player->itemarmour);
-	printw("This Is You NOW, Now please enter the ARENA of Generica!\n\n Please press any key to continue");
-	getch();
+	while(choice == 'r')
+	{
+		create_player(player,weapons,armour,items);
+		printw("\nName: %s\n", player->name);
+		printw("You are carrying a %s that does %c damage, this %s with %dd%d damage\n\n",player->weaponname, player->kind, player->weaponverb, player->weapondice, player->weaponvalue);
+		printw("You are wearing a %s that provides %d protection from regular attacks\n\n", player->armourname, player->armourvalue);
+		printw("The other item that you carry is an %s, and has : %d hp impact; %d xp impact and %d armour impact\n\n", player->itemname, player->itemhp, player->itemxp, player->itemarmour);
+		printw("This Is You NOW, Now please enter the ARENA of Generica!\n\n Please press any key to continue or press r to reroll");
+		choice = getch();
+		clearscr();
+	}
 	classselect(player,class);
 	mainmenu(player,weapons,armour,items,monsters, modpath);
-	deinit();
+	
+	endgamefromload:
+	
+		destroy_creature(player);
+		deinit();
 
 
 	return 0;

@@ -508,3 +508,11 @@ void generate_enemy(creature *monster,FILE *wep, FILE *armour, FILE* item, FILE 
 
 
 }
+
+
+
+void destroy_creature(creature *m)
+{
+	free(m);
+
+}
