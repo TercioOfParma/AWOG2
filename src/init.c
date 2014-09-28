@@ -16,7 +16,7 @@ void init()
 	
 	init_pair(1, COLOR_WHITE, COLOR_BLACK); //main default background
 	init_pair(2, COLOR_RED, COLOR_WHITE); //bleeding text
-	init_pair(3, COLOR_BLUE, COLOR_	WHITE);//nerve damage text
+	init_pair(3, COLOR_BLUE, COLOR_WHITE);//nerve damage text
 	init_pair(4, COLOR_GREEN, COLOR_BLACK); //critical
 	
 	
