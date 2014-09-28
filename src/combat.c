@@ -14,7 +14,7 @@ void classselect(creature *player, FILE *classfile)
 	int noclasses = atoi(temphold);
 	int hph,tohith,xph;
 	int looper = 0;
-	int choice = -1;
+	int choice;
 	printw("     Name,HPmod,tohitmod,xpmod\n");
 	char *classes[noclasses];
 	
@@ -27,13 +27,26 @@ void classselect(creature *player, FILE *classfile)
 		looper++;
 	
 	}
-	printw("Type the valid number of the class you want: ");
-	while(choice == -1 || choice > noclasses)
+	
+	do
 	{
+		choice = 0;
+		printw("Type the valid number of the class you want: ");
 		scanw("%d", &choice);
 		choice -= 1;
 		
-	}
+		if(choice < 0 || choice >= noclasses)
+		{
+			printw("Invalid number\n");
+		
+		}
+		else
+		{
+			break;
+		
+		}
+		
+	}while(1 == 1);
 
 	classname = strtok(classes[choice], ",");
 	hpbonus = strtok(NULL, ",");
