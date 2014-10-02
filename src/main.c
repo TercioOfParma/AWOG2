@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
 	{
 		if(load(player,weapons,armour,items,monsters,modpath) == 1)
 		{
-			goto endgamefromload;
+			goto endgamefromload; // dijstra would be proud
 		}
 	
 	}
