@@ -1,6 +1,6 @@
 Things to be added at some point before I die:
 
-  Destorying objects and attempting to keep memory clear
+  Destorying objects and attempting to keep memory clear  X
   
   Compression of saves of some kind
   
