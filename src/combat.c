@@ -132,6 +132,7 @@ void mainmenu(creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon, 
 			clearscr();
 			break;
 		case 4:
+			destroy_creature(monster);// Gotta clean up what you have used
 			return;
 			break;
 	
