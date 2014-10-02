@@ -7,9 +7,7 @@
 #define LINES_H 70
 #define COLS_H 140
 
-void init();
-void deinit();
-void clearscr();
+
 
 
 typedef struct{
@@ -62,3 +60,7 @@ void droppickup(creature *player, creature *monster);//handles pickups and such
 void mainmenu(creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon, char *modpath);
 void classselect(creature *player, FILE *classfile);
 void show_equipment(creature *player);
+void init();
+void deinit();
+void clearscr();
+void destroy_creature(creature *m)
