@@ -498,7 +498,7 @@ void combat_menu(creature *player, creature *monster)
 			clearscr();
 			
 			
-		}
+	}
 		
 	if(player->hp < 0)
 		{
@@ -521,7 +521,7 @@ void combat_menu(creature *player, creature *monster)
 			printw("2: %s, %d protection\n\n", monster->armourname, monster->armourvalue);
 			if(!strstr(monster->name, "EMPTY"))//for some strange reason this means that the monster ISN'T carrying an empty consumable
 			{
-			printw("3: %s, providing %d hp, %d xp, and %d armour\n\n", monster->itemname, monster->itemhp, monster->itemxp, monster->itemarmour);
+				printw("3: %s, providing %d hp, %d xp, and %d armour\n\n", monster->itemname, monster->itemhp, monster->itemxp, monster->itemarmour);
 			
 			
 			}
