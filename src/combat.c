@@ -99,7 +99,6 @@ void mainmenu(creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon, 
 		player->nhp += nhpbonus;
 		player->level += 1;
 		
-		xp *= 3;
 		hpbonus *= 2;
 		chpbonus *= 2;
 		nhpbonus *= 2;
