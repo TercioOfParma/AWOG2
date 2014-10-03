@@ -63,6 +63,7 @@ void classselect(creature *player, FILE *classfile)
 	player->xp = player->xp + xph;
 	player->tohit = player->tohit - tohith;
 	player->hp = player->hp + hph;
+	player->level = 1;
 	
 
 }
@@ -75,7 +76,7 @@ void mainmenu(creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon, 
 
 	int option = 0;
 	static int xp, hpbonus, chpbonus, tohitbonus, nhpbonus;  
-	xp = 100;
+	xp = 100 * player->level;;
 	hpbonus = 100;
 	chpbonus = 12;
 	nhpbonus = 12;
@@ -96,7 +97,8 @@ void mainmenu(creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon, 
 		player->chp += chpbonus;
 		player->tohit -= tohitbonus;
 		player->nhp += nhpbonus;
-	
+		player->level += 1;
+		
 		xp *= 3;
 		hpbonus *= 2;
 		chpbonus *= 2;
