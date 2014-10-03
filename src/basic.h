@@ -63,4 +63,4 @@ void show_equipment(creature *player);
 void init();
 void deinit();
 void clearscr();
-void destroy_creature(creature *m)
+void destroy_creature(creature *m);
