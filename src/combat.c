@@ -683,7 +683,7 @@ int load (creature *player, FILE *wep, FILE *armour, FILE* item, FILE *mon, char
 	strcpy(player->weaponverb, contents[10]);
 	player->weaponvalue = atoi(contents[11]);
 	player->weapondice = atoi(contents[12]);
-	player->kind = contents[13][0];
+	player->kind = contents[13];
 	strcpy(player->armourname, contents[14]);
 	player->armourvalue = atoi(contents[15]);
 	strcpy(player->itemname, contents[16]);
